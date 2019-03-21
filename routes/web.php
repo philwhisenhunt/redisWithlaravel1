@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Redis;
 */
 
 Route::get('/', function () {
-    $visits = Redis::incr('visits');
+    $visits = Redis::incrBy('visits', 5);
 
     return view('welcome')->withVisits($visits);
 });
