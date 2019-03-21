@@ -9,7 +9,11 @@
  
     </head>
 <body>
-    <h1>Hello. You are visiter #{{ $visits }}. </h1>
+    <h1>Some video </h1>
+
+    <p>
+    This video has been downloaded {{ $downloads ?? 'no' }} times. 
+    </p>
 </body>
 
 </html>

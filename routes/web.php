@@ -13,8 +13,7 @@ use Illuminate\Support\Facades\Redis;
 |
 */
 
-Route::get('/', function () {
-    $visits = Redis::incrBy('visits', 5);
-
-    return view('welcome')->withVisits($visits);
+Route::get('videos/{id}', function ($id) {
+    $downloads = Redis::get("videos.{$id}.downloads");
+    return view('welcome')->withDownloads($downloads);
 });
