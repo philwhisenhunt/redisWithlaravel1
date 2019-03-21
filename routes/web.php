@@ -17,3 +17,11 @@ Route::get('videos/{id}', function ($id) {
     $downloads = Redis::get("videos.{$id}.downloads");
     return view('welcome')->withDownloads($downloads);
 });
+
+Route::get('videos/{id}/download', function ($id){
+
+    //prepare the download
+    Redis::incr("videos.{$id}.downloads");
+
+    return back();
+});
