@@ -27,3 +27,8 @@ Route::get('videos/{id}/download', function ($id){
     return back();
 });
 */
+
+Route::get('/', function (){
+
+    return Redis::hgetall('user.1.stats')['favorites'];
+});
