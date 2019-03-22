@@ -30,5 +30,6 @@ Route::get('videos/{id}/download', function ($id){
 
 Route::get('/', function (){
 
-    return Redis::hgetall('user.1.stats')['favorites'];
+    return Redis::hgetall('user.2.stats')['opens'];
 });
+
