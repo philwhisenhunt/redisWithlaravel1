@@ -30,6 +30,15 @@ Route::get('videos/{id}/download', function ($id){
 
 Route::get('/', function (){
 
-    return Redis::hgetall('user.2.stats')['opens'];
+    $user3Stats = [
+        'favorites' => 10,
+        'watchLaters' => 20,
+        'completions' => 35
+    ];  
+
+    Redis::hmset(
+        "user.3.stats", $user3Stats);
+
+    return Redis::hgetall('user.3.stats');
 });
 
