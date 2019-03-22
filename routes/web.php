@@ -42,3 +42,7 @@ Route::get('/', function (){
     return Redis::hgetall('user.3.stats');
 });
 
+Route::get('/user/{id}/stats', function ($id){
+    return Redis::hgetall("user.$id.stats");
+});
+
