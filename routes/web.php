@@ -31,6 +31,7 @@ Route::get('videos/{id}/download', function ($id){
 Route::get('/', function (){
 
     $user3Stats = [
+        //API requests could go here? 
         'favorites' => 10,
         'watchLaters' => 20,
         'completions' => 35
@@ -44,5 +45,17 @@ Route::get('/', function (){
 
 Route::get('/user/{id}/stats', function ($id){
     return Redis::hgetall("user.$id.stats");
+});
+
+Route::get('favorite-video', function(){
+    Redis::hincrby('user.1.stats', 'favorites', 1);
+
+    return redirect('/');
+
+});
+
+
+Route::get('/test1/{id}', function ($id){
+    return $id;
 });
 
