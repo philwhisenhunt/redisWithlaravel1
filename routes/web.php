@@ -59,3 +59,8 @@ Route::get('/test1/{id}', function ($id){
     return $id;
 });
 
+Route::get('/redis', function(){
+
+   return Redis::hgetall('user.1.stats'); 
+});
+
