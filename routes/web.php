@@ -86,3 +86,10 @@ Route::get('/welcome2', function(){
 Route::get('foo', function(){
     return "Hello world";
 });
+
+//set it up so that going to /weather/{zipcode} allows you to see the cached version
+//set a cached version with a single word for now.
+
+Route::get('/weather/23223', function(){
+    return Redis::get('location.23223.climate');
+});
