@@ -92,5 +92,9 @@ Route::get('foo', function(){
 
 Route::get('/weather/{zipcode}', function($zipcode){
     // return Redis::get("location.$zipcode.climate");
-    return view('weather');
+    $store = view('weather');
+
+    Redis::set("zip.weather", $store);
+
+    return $store;
 });
