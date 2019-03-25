@@ -77,5 +77,12 @@ Route::get('/secondplace', function(){
 });
 
 
-Route::view('/welcome', 'welcome.blade.php');
+Route::view('/welcome', 'welcome');
 
+Route::get('/welcome2', function(){
+    return view('welcome');
+});
+
+Route::get('foo', function(){
+    return "Hello world";
+});
