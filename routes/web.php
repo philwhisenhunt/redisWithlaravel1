@@ -75,3 +75,7 @@ Route::redirect('/firstplace', 'secondplace');
 Route::get('/secondplace', function(){
     return Redis::hgetall('user.1.stats');
 });
+
+
+Route::view('/welcome', 'welcome.blade.php');
+
