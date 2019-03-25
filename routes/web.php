@@ -64,3 +64,14 @@ Route::get('/redis', function(){
    return Redis::hgetall('user.1.stats'); 
 });
 
+Route::get('/{user}/views', function(){
+
+    return Redis::hgetall("user.$user.stats");
+});
+
+
+Route::redirect('/firstplace', 'secondplace');
+
+Route::get('/secondplace', function(){
+    return Redis::hgetall('user.1.stats');
+});
