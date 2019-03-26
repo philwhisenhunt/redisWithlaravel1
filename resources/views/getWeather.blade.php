@@ -25,7 +25,9 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
 
-$currentSummary = $response['currently']['summary'];
+// $currentSummary = $response['currently']['summary'];
+$currentSummary = $response['minutely']['summary'];
+
 echo "\n";
   echo $currentSummary;
   echo "\n \n";
