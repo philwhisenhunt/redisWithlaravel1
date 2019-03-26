@@ -90,7 +90,7 @@ Route::get('foo', function(){
 //set it up so that going to /weather/{zipcode} allows you to see the cached version
 //set a cached version with a single word for now.
 
-Route::get('/weather/{zipcode}', function($zipcode){
+Route::get('/weather/{zipcode}', function($coordinates){
     // return Redis::get("location.$zipcode.climate");
 
     //but next change needs to make this conditional
@@ -105,7 +105,7 @@ Route::get('/weather/{zipcode}', function($zipcode){
     }
 
     else{
-        $store = view('getWeather');
+        $store = view('getWeather', ['coordinates' => '/37.8267,-122.4233']);
         Redis::setex("zip.weather", 3600, $store);
         return view('weather', ['store' => $store]);
         return "else statement";
