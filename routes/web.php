@@ -105,7 +105,7 @@ Route::get('/weather/{zipcode}', function($coordinates){
     }
 
     else{
-        $store = view('getWeather', ['coordinates' => '/37.8267,-122.4233']);
+        $store = view('getWeather');
         Redis::setex("zip.weather", 3600, $store);
         return view('weather', ['store' => $store]);
         return "else statement";
