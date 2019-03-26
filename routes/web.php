@@ -97,18 +97,22 @@ Route::get('/weather/{zipcode}', function($coordinates){
 
     if(Redis::exists("zip.weather")){
         // return Redis::get('zip.weather');
+        // $store = Redis::get('zip.weather');
         $store = Redis::get('zip.weather');
+
         // return view('weather', ['store' => $store]);
         return view('weather', ['store' => $store]);
+        
 
 
     }
 
     else{
         $store = view('getWeather');
+        // $store = view('getWeather')->withCoordinates(['coordinates' => '37.8267,-122.4233']);
+
         Redis::setex("zip.weather", 3600, $store);
         return view('weather', ['store' => $store]);
-        return "else statement";
     }
 
     
