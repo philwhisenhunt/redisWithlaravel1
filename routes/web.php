@@ -92,11 +92,24 @@ Route::get('foo', function(){
 
 Route::get('/weather/{zipcode}', function($zipcode){
     // return Redis::get("location.$zipcode.climate");
-    $store = view('getWeather');
 
     //but next change needs to make this conditional
 
-    Redis::setex("zip.weather", 4, $store);
+    if(Redis::exists("zip.weather")){
+        // return Redis::get('zip.weather');
+        $store = Redis::get('zip.weather');
+        // return view('weather', ['store' => $store]);
+        return view('weather', ['store' => $store]);
 
-    return view('weather', ['store' => $store]);
+
+    }
+
+    else{
+        $store = view('getWeather');
+        Redis::setex("zip.weather", 3600, $store);
+        return view('weather', ['store' => $store]);
+        return "else statement";
+    }
+
+    
 });
