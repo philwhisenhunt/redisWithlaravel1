@@ -92,11 +92,11 @@ Route::get('foo', function(){
 
 Route::get('/weather/{zipcode}', function($zipcode){
     // return Redis::get("location.$zipcode.climate");
-    $store = view('weather');
+    $store = view('getWeather');
 
     //but next change needs to make this conditional
 
     Redis::setex("zip.weather", 4, $store);
 
-    return $store;
+    return view('weather', ['store' => $store]);
 });
