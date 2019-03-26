@@ -27,7 +27,7 @@ if ($err) {
 
 $currentSummary = $response['currently']['summary'];
 echo "\n";
-  echo 'The current weather in Alcatraz is: ' . $currentSummary;
+  echo $currentSummary;
   echo "\n \n";
 }
 
