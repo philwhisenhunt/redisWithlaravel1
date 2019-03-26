@@ -96,7 +96,7 @@ Route::get('/weather/{zipcode}', function($zipcode){
 
     //but next change needs to make this conditional
 
-    Redis::setex("zip.weather", 3600, $store);
+    Redis::setex("zip.weather", 4, $store);
 
     return $store;
 });

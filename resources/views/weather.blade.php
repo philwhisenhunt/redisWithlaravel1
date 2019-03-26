@@ -1,9 +1,11 @@
 <?php
 
 $curl = curl_init();
+$key = env('DARK_SKY_KEY');
+$coordinates = "/37.8267,-122.4233";
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.darksky.net/forecast/33f04cae19d269f690b892deaa90f918/37.8267,-122.4233",
+  CURLOPT_URL => "https://api.darksky.net/forecast/" . $key . $coordinates,
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
