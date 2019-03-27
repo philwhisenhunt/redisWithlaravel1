@@ -120,7 +120,18 @@ Route::get('foo', function(){
 
 Route::get('weather/{coordinates}', function($coordinates){
   
-    $answer = weatherFunction($coordinates);
+    if(Redis::EXISTS("weather.$coordinates")){
+        $answer = Redis::get("weather.$coordinates");
+            return $answer;
+    }
+
+    else{
+        $weather = weatherFunction($coordinates);
+
+        Redis::setex("weather.$coordinates", 5, $weather);
+        $answer = Redis::get("weather.$coordinates");
+       return $answer;
+    }
    
 
     return view('coordWeather', ['answer' => $answer]);
