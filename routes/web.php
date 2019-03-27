@@ -122,6 +122,9 @@ Route::get('weather/{coordinates}', function($coordinates){
     // include(app_path() . '\Functions\weatherFunction.php');
    
     // return view('coordWeather');
+    // $coordinates = '39.0997,94.5786';
     $answer = weatherFunction($coordinates);
-    return $coordinates;
-});
+    // return $answer;
+
+    return view('coordWeather', ['answer' => $answer]);
+});     

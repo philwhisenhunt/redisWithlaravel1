@@ -9,7 +9,7 @@ function weatherFunction($coordy){
     //how to pass coordinates here?
 
     curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://api.darksky.net/forecast/" . $key . $coordy,
+    CURLOPT_URL => "https://api.darksky.net/forecast/" . $key . "/" . $coordy,
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -36,6 +36,9 @@ function weatherFunction($coordy){
     echo $currentSummary;
     echo "\n \n";
     }
+    //return $currentSummary;
+    //return "hello";
+    return $currentSummary;
 }
 
 
