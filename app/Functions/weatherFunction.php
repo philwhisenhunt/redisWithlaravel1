@@ -30,7 +30,10 @@ function weatherFunction($coordy){
     } else {
 
     // $currentSummary = $response['currently']['summary'];
+    //$currentSummary = $response['minutely']['summary'];
     $currentSummary = $response['minutely']['summary'];
+
+    
 
     echo "\n";
     echo $currentSummary;
