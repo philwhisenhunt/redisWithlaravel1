@@ -121,18 +121,18 @@ Route::get('foo', function(){
 Route::get('weather/{coordinates}', function($coordinates){
   
     if(Redis::EXISTS("weather.$coordinates")){
-        $answer = Redis::get("weather.$coordinates");
-            return $answer;
+        $weather = Redis::get("weather.$coordinates");
+            // return $weather;
     }
 
     else{
         $weather = weatherFunction($coordinates);
 
-        Redis::setex("weather.$coordinates", 5, $weather);
+        Redis::setex("weather.$coordinates", 3600, $weather);
         $answer = Redis::get("weather.$coordinates");
-       return $answer;
+    //    return $answer;
     }
    
 
-    return view('coordWeather', ['answer' => $answer]);
+    return view('coordWeather', ['answer' => $weather]);
 });     

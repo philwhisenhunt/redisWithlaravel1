@@ -15,7 +15,7 @@
             <h1>Weather Viewer</h1>
 
             <div class="actual-weather">
-                <h3>The coordWeather weather in Alabama is: </h3>
+                <h3>The weather in Alabama is: </h3>
                 <h2> {{ $answer }}</h2>
             </div>
 
