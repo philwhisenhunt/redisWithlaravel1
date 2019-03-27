@@ -3,6 +3,7 @@
 $curl = curl_init();
 $key = env('DARK_SKY_KEY');
 $coordinates = "/37.8267,-122.4233";
+//how to pass coordinates here?
 
 curl_setopt_array($curl, array(
   CURLOPT_URL => "https://api.darksky.net/forecast/" . $key . $coordinates,

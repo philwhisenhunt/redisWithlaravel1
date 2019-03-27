@@ -90,30 +90,38 @@ Route::get('foo', function(){
 //set it up so that going to /weather/{zipcode} allows you to see the cached version
 //set a cached version with a single word for now.
 
-Route::get('/weather/{zipcode}', function($coordinates){
-    // return Redis::get("location.$zipcode.climate");
+// Route::get('/weather/{zipcode}', function($coordinates){
+//     // return Redis::get("location.$zipcode.climate");
 
-    //but next change needs to make this conditional
+//     //but next change needs to make this conditional
 
-    if(Redis::exists("zip.weather")){
-        // return Redis::get('zip.weather');
-        // $store = Redis::get('zip.weather');
-        $store = Redis::get('zip.weather');
+//     if(Redis::exists("zip.weather")){
+//         // return Redis::get('zip.weather');
+//         // $store = Redis::get('zip.weather');
+//         $store = Redis::get('zip.weather');
 
-        // return view('weather', ['store' => $store]);
-        return view('weather', ['store' => $store]);
+//         // return view('weather', ['store' => $store]);
+//         return view('weather', ['store' => $store]);
         
 
 
-    }
+//     }
 
-    else{
-        $store = view('getWeather');
-        // $store = view('getWeather')->withCoordinates(['coordinates' => '37.8267,-122.4233']);
+//     else{
+//         $store = view('getWeather');
+//         // $store = view('getWeather')->withCoordinates(['coordinates' => '37.8267,-122.4233']);
 
-        Redis::setex("zip.weather", 3600, $store);
-        return view('weather', ['store' => $store]);
-    }
+//         Redis::setex("zip.weather", 3600, $store);
+//         return view('weather', ['store' => $store]);
+//     }
 
     
+// });
+
+Route::get('weather/{coordinates}', function($coordinates){
+    // include(app_path() . '\Functions\weatherFunction.php');
+   
+    // return view('coordWeather');
+    $answer = weatherFunction($coordinates);
+    return $coordinates;
 });

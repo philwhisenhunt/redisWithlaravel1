@@ -38,7 +38,11 @@
         },
         "classmap": [
             "database/seeds",
-            "database/factories"
+            "database/factories",
+            "app/functions"
+        ],
+        "files": [
+            "app/functions/weatherFunction.php"
         ]
     },
     "autoload-dev": {
