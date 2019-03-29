@@ -138,6 +138,11 @@ Route::get('weather/{coordinates}', function($coordinates){
 });     
 
 Route::get('/about/{id}', function($id){
-    Redis::setex("id", 2, 3);
+    Redis::setex("id", "200", $id);
     return $id;
+});
+
+Route::get('/push/{id}', function($id){
+    Redis::incrby("nowpush.$id", "1");
+    return Redis::get("nowpush.$id");
 });
