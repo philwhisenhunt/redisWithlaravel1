@@ -136,3 +136,7 @@ Route::get('weather/{coordinates}', function($coordinates){
 
     return view('coordWeather', ['answer' => $weather]);
 });     
+
+Route::get('/about/{id}', function($id){
+    return $id;
+});
