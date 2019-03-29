@@ -138,5 +138,6 @@ Route::get('weather/{coordinates}', function($coordinates){
 });     
 
 Route::get('/about/{id}', function($id){
+    Redis::setex("id", 2, 3);
     return $id;
 });
