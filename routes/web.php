@@ -146,3 +146,9 @@ Route::get('/push/{id}', function($id){
     Redis::incrby("nowpush.$id", "1");
     return Redis::get("nowpush.$id");
 });
+
+Route::get('/dropcount/{amount}', function($amount){
+    Redis::incrby('theCount', $amount);
+    $returnedValue = Redis::get('theCount');
+    return $returnedValue;
+});
