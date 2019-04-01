@@ -152,3 +152,10 @@ Route::get('/dropcount/{amount}', function($amount){
     $returnedValue = Redis::get('theCount');
     return $returnedValue;
 });
+
+
+Route::get('/usercount', function(){
+    Redis::incrby("usercount", 1);
+
+    return Redis::get('usercount');
+});
