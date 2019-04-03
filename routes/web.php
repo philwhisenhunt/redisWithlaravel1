@@ -117,7 +117,7 @@ Route::get('foo', function(){
 
     
 // });
-
+/*
 Route::get('weather/{coordinates}', function($coordinates){
   
     if(Redis::EXISTS("weather.$coordinates")){
@@ -136,6 +136,24 @@ Route::get('weather/{coordinates}', function($coordinates){
 
     return view('coordWeather', ['answer' => $weather]);
 });     
+*/
+
+//can we reduce lines 123 and 132 to one step?
+
+Route::get('weather/{coordinates}', function($coordinates){
+if($weather = Redis::get("weather.$coordinates")){
+   
+}
+
+else {
+    $weather = weatherFunction($coordinates);
+    Redis::setex("weather.$coordinates", 3600, $weather);
+}
+// var_dump($this);
+// die();
+return view('coordWeather', ['answer'=> $weather]);
+});
+
 
 Route::get('/about/{id}', function($id){
     Redis::setex("id", "200", $id);

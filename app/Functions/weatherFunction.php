@@ -35,9 +35,9 @@ function weatherFunction($coordy){
 
     
 
-    echo "\n";
-    echo $currentSummary;
-    echo "\n \n";
+    // echo "\n";
+    // echo $currentSummary;
+    // echo "\n \n";
     }
     //return $currentSummary;
     //return "hello";
